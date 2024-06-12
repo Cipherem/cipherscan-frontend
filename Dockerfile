@@ -50,6 +50,7 @@ COPY . .
 
 # Generate .env.registry with ENVs list and save build args into .env file
 COPY --chmod=+x ./deploy/scripts/collect_envs.sh ./
+RUN chmod +x ./collect_envs.sh
 RUN ./collect_envs.sh ./docs/ENVS.md
 
 # Next.js collects completely anonymous telemetry data about general usage.
