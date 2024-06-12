@@ -107,13 +107,18 @@ COPY --from=builder /app/deploy/tools/feature-reporter/index.js ./feature-report
 # Copy scripts
 ## Entripoint
 COPY --chmod=+x ./deploy/scripts/entrypoint.sh .
+RUN chmod +x ./entrypoint.sh
 ## ENV validator and client script maker
 COPY --chmod=+x ./deploy/scripts/validate_envs.sh .
+RUN chmod +x ./validate_envs.sh
 COPY --chmod=+x ./deploy/scripts/make_envs_script.sh .
+RUN chmod +x ./make_envs_script.sh
 ## Assets downloader
 COPY --chmod=+x ./deploy/scripts/download_assets.sh .
+RUN chmod +x ./download_assets.sh
 ## Favicon generator
 COPY --chmod=+x ./deploy/scripts/favicon_generator.sh .
+RUN chmod +x ./favicon_generator.sh
 COPY ./deploy/tools/favicon-generator ./deploy/tools/favicon-generator
 RUN ["chmod", "-R", "777", "./deploy/tools/favicon-generator"]
 RUN ["chmod", "-R", "777", "./public"]
